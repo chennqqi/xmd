@@ -8,7 +8,7 @@ import (
 "io"
 "encoding/xml"
 "bytes"
-xmd "./types"
+xmd "./xmd"
 )
 
 const (
@@ -42,7 +42,7 @@ func main(){
 			xmd.SetupGit()
 		} else if flag.Arg(0) == "to" {
 			// fmt.Println("to")			
-			unzip(flag.Arg(1))
+			from(flag.Arg(1))
 		} else if flag.Arg(0) == "from" {
 			//TODO
 		} else {
@@ -51,7 +51,7 @@ func main(){
 	}
 }
 
-func unzip(src string) error {
+func from(src string) error {
 	if len(src) > 0 {
 
 		fileExists, err := xmd.Exists(src)
@@ -92,8 +92,6 @@ func unzip(src string) error {
     return nil
     
 }
-
-
 
 
 func usageAndExit(message string) {
