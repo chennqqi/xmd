@@ -4,13 +4,35 @@ import (
 "encoding/xml"
 )
 
-type WordDocument struct {
-	XMLName   xml.Name   `xml:"document"`
+type Document struct {
+	XMLName xml.Name `xml:"document"`
+
+	W string `xml:"w,attr"`
+    A string `xml:"a,attr"`
+    C string `xml:"c,attr"`
+    Dgm string `xml:"dgm,attr"`
+    Lc string `xml:"lc,attr"`
+    M string `xml:"m,attr"`
+    Mc string `xml:"mc,attr"`
+    O string `xml:"o,attr"`
+    Pic string `xml:"pic,attr"`
+    R string `xml:"r,attr"`
+    Sl string `xml:"sl,attr"`
+    V string `xml:"v,attr"`
+    W10 string `xml:"w10,attr"`
+    Wne string `xml:"wne,attr"`
+    Wp string `xml:"wp,attr"`
+    Wpg string `xml:"wpg,attr"`
+    Wps string `xml:"wps,attr"`
+
 	Background Background `xml:"background"`
 	Body Body `xml:"body"`
 }
+type Background struct {
+	Color string `xml:"color,attr"`
+}
 type Body struct {
-	Paragraph P `xml:"p"`
+	Paragraphs []P `xml:"p"`
 	SectPr SectPr `xml:"sectPr"`
 }
 type SectPr struct {
@@ -67,8 +89,10 @@ type Rtl struct {
 
 type T struct {
 	Space string `xml:"space,attr"`
-	Name string `xml:",chardata"`
+	Text string `xml:",chardata"`
 }
-type Background struct {
-	Color string `xml:"color,attr"`
-}
+
+
+
+
+
