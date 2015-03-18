@@ -1,10 +1,11 @@
 package main
 
 import (
-"flag"
-"fmt"
-"os"
-xmd "./xmd"
+	"flag"
+	"fmt"
+	"os"
+
+	"github.com/wookoouk/xmd/xmd"
 )
 
 const (
@@ -18,7 +19,8 @@ Options:
   tomd    convert file from docx to xmd.
   tox  convert file from xmd to docx.
 `
-func main(){
+
+func main() {
 
 	flag.Usage = func() {
 		fmt.Fprint(os.Stderr, usage)
@@ -56,5 +58,3 @@ func usageAndExit(message string) {
 	fmt.Fprintf(os.Stderr, "\n")
 	os.Exit(1)
 }
-
-

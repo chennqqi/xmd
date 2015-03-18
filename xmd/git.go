@@ -1,25 +1,24 @@
 package xmd
 
 import (
-"fmt"
+	"fmt"
 )
 
 const (
-	gitConfigPath = ".git/config"
+	gitConfigPath     = ".git/config"
 	commitCommandPath = ".git/hooks/xmd-commit"
-	
 )
 
 var (
 	commitCommand = []byte("echo 'xmd was here'\n")
 )
 
-func SetupGit(){
+func SetupGit() {
 	configExists, err := Exists(gitConfigPath)
 	Check(err)
 	if configExists {
 		//write commit hook
-		err := WriteBytesToFile(commitCommandPath,commitCommand)
+		err := WriteBytesToFile(commitCommandPath, commitCommand)
 		if err == nil {
 			fmt.Println("written commit hook")
 		}
@@ -31,4 +30,3 @@ func SetupGit(){
 		fmt.Println("its not a valid git repo")
 	}
 }
-
